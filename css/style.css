@@ -561,7 +561,7 @@ footer#customerService {
 }
 
 .custom-check input:checked + label::before {
-  background: var(--font-button-color) url(/assets/check-for-checkbox.svg)
+  background: var(--font-button-color) url(../assets/check-for-checkbox.svg)
     no-repeat center;
 }
 
