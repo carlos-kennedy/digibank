@@ -7,24 +7,27 @@
 }
 
 :root {
-  --color-complemantary: #0cd68a;
-  --paragraph-color: #6b6c6e;
-  --bg-button-color: #000000;
-  --footer-bg-color: #262626;
-  --big-title-font-color: #030314;
-  --subtitle-font-color: #000000;
+  --color-complemantary: hsl(157, 89%, 44%);
+  --paragraph-color: hsl(220, 1%, 43%);
+  --bg-button-color: hsl(0, 0%, 0%);
+  --footer-bg-color: hsl(0, 0%, 15%);
+  --big-title-font-color: hsl(240, 74%, 5%);
+  --subtitle-font-color: hsl(0, 0%, 0%);
 
-  --font-button-color: #ffffff;
+  --font-button-color: hsl(0, 0%, 100%);
   --gradient: linear-gradient(
     100deg,
     hsl(158, 100%, 88%) 0%,
     hsla(158, 100%, 88%, 0) 100%
   );
 
+  --bg-fundo-icon-card-1: #c4ffe9;
+  --bg-fundo-icon-card-2: #c3f4ff;
+  --bg-fundo-icon-card-3: #f6c3ff;
+  --bg-fundo-icon-card-4: #ffc3c7;
+
   --nav-height: 7.1rem;
   font-size: 62.5%;
-
-  /* font-family: 'Inter', sans-serif; */
 }
 
 html {
@@ -39,7 +42,11 @@ body {
 }
 
 section {
-  padding-block: var(--nav-height);
+  padding-block: calc(14.2rem + var(--nav-height));
+}
+
+article {
+  padding-block: calc(14.2rem + var(--nav-height));
 }
 
 .wrapper {
@@ -69,6 +76,14 @@ button {
   display: flex;
   align-items: center;
   background: transparent;
+}
+
+::-webkit-scrollbar {
+  width: 1rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-complemantary);
 }
 /* ===========nav=========== */
 
@@ -106,20 +121,8 @@ nav.navigation .wrapper,
   color: var(--bg-button-color);
 }
 
-nav.navigation .nav-list li a::before {
-  content: "";
-  width: 0;
-  height: 0.1rem;
-  top: 2.5rem;
-  right: 0;
-  position: relative;
-  display: block;
-  background: var(--bg-button-color);
-
-  transition: width 0.7s;
-}
-
-nav.navigation .nav-list li a:after {
+.menu .nav-list li a.active::after,
+.menu .nav-list li a::after {
   content: "";
   width: 0;
   height: 0.1rem;
@@ -132,8 +135,24 @@ nav.navigation .nav-list li a:after {
   transition: width 1s;
 }
 
+nav.navigation .nav-list li a.active::before,
+nav.navigation .nav-list li a::before {
+  content: "";
+  width: 0;
+  height: 0.1rem;
+  top: 3rem;
+  right: 0;
+  position: relative;
+  display: block;
+  background: var(--bg-button-color);
+
+  transition: width 0.7s;
+}
+
 nav.navigation .nav-list li a:hover::before,
-nav.navigation .nav-list li a:hover::after {
+nav.navigation .nav-list li a:hover::after,
+nav.navigation .nav-list li a.active::before,
+nav.navigation .nav-list li a.active::after {
   width: 100%;
 }
 
@@ -148,9 +167,9 @@ nav.navigation .nav-list li a:hover::after {
 #home::before {
   content: "";
   width: 100%;
-  height: calc(70rem - var(--nav-height));
+  height: calc(84rem - var(--nav-height));
   background: var(--gradient);
-  
+
   position: absolute;
   top: 0;
   left: 0;
@@ -196,6 +215,13 @@ nav.navigation .nav-list li a:hover::after {
   letter-spacing: -0.015rem;
 
   cursor: pointer;
+
+  transition: 0.9s;
+}
+
+.home .btn:hover {
+  filter: brightness(1.1);
+  letter-spacing: 0.2rem;
 }
 
 .home .content h3 {
@@ -221,7 +247,7 @@ nav.navigation .nav-list li a:hover::after {
 }
 
 /* ===========credit-cards=========== */
-#credit-cards .wrapper .cards {
+#creditCards .wrapper .cards {
   display: flex;
   gap: 4.8rem;
 }
@@ -248,12 +274,14 @@ nav.navigation .nav-list li a:hover::after {
 .credit-cards .card {
   width: 40%;
   padding: 2.4rem;
-  
+
   flex-grow: 1;
   flex-shrink: 2;
 
   box-shadow: 0 0 2rem hsla(0, 0%, 0%, 0.15);
   border-radius: 0.4rem;
+
+  transition: background 0.9s;
 }
 
 .credit-cards .card h2 {
@@ -268,10 +296,56 @@ nav.navigation .nav-list li a:hover::after {
 
 .credit-cards a {
   font-weight: 500;
-  font-size: clamp(1.8rem, 2rem, 4vw);
+  font-size: clamp(1.8rem, 2rem, 2vw);
   line-height: 2.2rem;
 
   color: var(--color-complemantary);
+
+  transition: color 0.9s;
+}
+
+.credit-cards .card .arrow {
+  transition: stroke 0.8s;
+}
+
+.credit-cards .arrow path {
+  transition: stroke 0.9s;
+}
+
+.credit-cards a:hover,
+.credit-cards .arrow path {
+  opacity: 0.7;
+}
+
+.credit-cards .card .icon rect {
+  transition: fill 0.9s;
+}
+
+.credit-cards .card:hover .icon rect:nth-child(1) {
+  fill: var(--bg-button-color);
+  opacity: 0.8;
+}
+
+.credit-cards .card:nth-child(1):hover {
+  background: var(--bg-fundo-icon-card-1);
+}
+
+.credit-cards .card:nth-child(2):hover {
+  background: var(--bg-fundo-icon-card-2);
+}
+
+.credit-cards .card:nth-child(3):hover {
+  background: var(--bg-fundo-icon-card-3);
+}
+
+.credit-cards .card:nth-child(4):hover {
+  background: var(--bg-fundo-icon-card-4);
+}
+
+.credit-cards .card:hover a,
+.credit-cards .card:hover .arrow path {
+  color: var(--bg-button-color);
+  stroke: var(--bg-button-color);
 }
 
 /* ===========services=========== */
@@ -351,7 +425,7 @@ nav.navigation .nav-list li a:hover::after {
 
 /* ===========footer=========== */
 
-footer {
+footer#customerService {
   background: var(--footer-bg-color);
 }
 
@@ -389,6 +463,21 @@ footer {
   align-items: center;
 }
 
+.social-list-links {
+  padding-top: 1.4rem;
+
+  display: flex;
+  gap: 0.5rem;
+}
+
+.social-list-links li {
+  transition: filter 0.7s;
+}
+
+.social-links .social-list-links li:hover {
+  filter: brightness(1.6);
+}
+
 .email {
   padding-top: 2rem;
   padding-bottom: 1.6rem;
@@ -407,17 +496,16 @@ footer {
 
 .email .btn-form-email {
   cursor: pointer;
+  transition: filter 0.7s;
 }
 
-.btn-form-email svg {
+.email .btn-form-email:hover {
+  filter: brightness(0.9);
+}
+
+.email .btn-form-email svg {
   width: 4rem;
   height: 4rem;
-}
-
-.social-list-links {
-  padding-top: 1.4rem;
-  display: flex;
-  gap: 0.5rem;
 }
 
 .check-promo-notif {
@@ -442,11 +530,12 @@ footer {
   content: "";
   width: 0%;
   height: 0.1rem;
-  display: block;
-  position: relative;
   top: 0;
   left: 6.9rem;
+  position: relative;
   background: var(--font-button-color);
+  display: block;
+
   transition: width 0.9s;
 }
 
@@ -462,12 +551,13 @@ footer {
   content: "";
   width: 2rem;
   height: 2rem;
-  display: inline-block;
-  vertical-align: middle;
-  border-radius: 0.3rem;
   margin-inline-end: 0.7rem;
   margin-block-end: 0.7rem;
+  vertical-align: middle;
   background: var(--font-button-color);
+  display: inline-block;
+
+  border-radius: 0.3rem;
 }
 
 .custom-check input:checked + label::before {
@@ -475,5 +565,26 @@ footer {
     no-repeat center;
 }
 
-/* custom-check
-c-check */
+.dmc {
+  padding-top: 5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: 1.5rem;
+
+  color: var(--font-button-color);
+}
+
+.dmc p {
+  color: var(--font-button-color);
+}
+.dmc .country {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  gap: 0.8rem;
+}
