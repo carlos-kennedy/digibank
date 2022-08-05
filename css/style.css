@@ -10,7 +10,7 @@
   --color-complemantary: #0cd68a;
   --paragraph-color: #6b6c6e;
   --bg-button-color: #000000;
-
+  --footer-bg-color: #262626;
   --big-title-font-color: #030314;
   --subtitle-font-color: #000000;
 
@@ -106,6 +106,37 @@ nav.navigation .wrapper,
   color: var(--bg-button-color);
 }
 
+nav.navigation .nav-list li a::before {
+  content: "";
+  width: 0;
+  height: 0.1rem;
+  top: 2.5rem;
+  right: 0;
+  position: relative;
+  display: block;
+  background: var(--bg-button-color);
+
+  transition: width 0.7s;
+}
+
+nav.navigation .nav-list li a:after {
+  content: "";
+  width: 0;
+  height: 0.1rem;
+  bottom: -1rem;
+  right: 0;
+  position: relative;
+  display: block;
+  background: var(--bg-button-color);
+
+  transition: width 1s;
+}
+
+nav.navigation .nav-list li a:hover::before,
+nav.navigation .nav-list li a:hover::after {
+  width: 100%;
+}
+
 /* ===========home=========== */
 
 #home .wrapper {
@@ -116,19 +147,21 @@ nav.navigation .wrapper,
 
 #home::before {
   content: "";
-  position: absolute;
-  z-index: -1;
   width: 100%;
   height: calc(70rem - var(--nav-height));
-  display: block;
+  background: var(--gradient);
+  
+  position: absolute;
   top: 0;
   left: 0;
-  background: var(--gradient);
+  z-index: -1;
+  display: block;
 }
 
 .home h1 {
   width: 68rem;
   padding-bottom: 3.2rem;
+
   font-weight: 700;
   font-size: 6.9rem;
   line-height: 7.2rem;
@@ -175,6 +208,7 @@ nav.navigation .wrapper,
 
 .home .content p:nth-last-child(1) {
   width: 37rem;
+
   font-weight: 500;
   font-size: 1.7rem;
   line-height: 2.1rem;
@@ -182,6 +216,7 @@ nav.navigation .wrapper,
 
 .home img {
   width: 40rem;
+
   transform: translateY(5.3rem);
 }
 
@@ -203,6 +238,7 @@ nav.navigation .wrapper,
 .credit-cards h2 {
   padding-top: 2.1rem;
   padding-bottom: 9.6rem;
+
   font-weight: 600;
   font-size: 5rem;
   line-height: 6.4rem;
@@ -211,11 +247,13 @@ nav.navigation .wrapper,
 
 .credit-cards .card {
   width: 40%;
-  flex-grow: 1;
   padding: 2.4rem;
+  
+  flex-grow: 1;
+  flex-shrink: 2;
+
   box-shadow: 0 0 2rem hsla(0, 0%, 0%, 0.15);
   border-radius: 0.4rem;
-  flex-shrink: 2;
 }
 
 .credit-cards .card h2 {
@@ -232,6 +270,7 @@ nav.navigation .wrapper,
   font-weight: 500;
   font-size: clamp(1.8rem, 2rem, 4vw);
   line-height: 2.2rem;
+
   color: var(--color-complemantary);
 }
 
@@ -246,14 +285,14 @@ nav.navigation .wrapper,
 
 #services::before {
   content: "";
-  position: absolute;
-  z-index: -1;
   width: 100%;
   height: calc(60rem - var(--nav-height));
   display: block;
+  background: var(--gradient);
+  position: absolute;
+  z-index: -1;
   bottom: 1;
   left: 0;
-  background: var(--gradient);
 }
 
 .services h2 {
@@ -266,6 +305,7 @@ nav.navigation .wrapper,
 .services .content p {
   padding-top: 8.3rem;
   margin-inline-start: 9.8rem;
+
   font-weight: 500;
   font-size: 2.4rem;
   line-height: 2.9rem;
@@ -273,6 +313,7 @@ nav.navigation .wrapper,
 
 .services img {
   width: 50rem;
+
   transform: translateY(-3rem);
 }
 
@@ -308,14 +349,131 @@ nav.navigation .wrapper,
   line-height: 2.7rem;
 }
 
-/* #home::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
+/* ===========footer=========== */
+
+footer {
+  background: var(--footer-bg-color);
+}
+
+#several-links-about-us .cards-info {
+  display: flex;
+  justify-content: center;
+  gap: 20rem;
+
+  border-bottom: 0.1rem solid var(--font-button-color);
+}
+
+.cards-info .card a {
+  color: var(--font-button-color);
+
+  font-weight: 100;
+  font-size: 1.8rem;
+  line-height: 2.2rem;
+  padding-block: 2rem;
+
+  transition: opacity 0.9s;
+}
+
+.cards-info .card a:hover {
+  opacity: 0.6;
+}
+
+.cards-info .card {
+  display: flex;
+  flex-direction: column;
+}
+
+.social-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.email {
+  padding-top: 2rem;
+  padding-bottom: 1.6rem;
+
+  display: flex;
+}
+
+.email [type="email"] {
   width: 100%;
-  height: calc(70rem - var(--nav-height));
+  padding: 0.8rem;
+  margin-right: -1rem;
+
+  font-size: 1.5rem;
+  line-height: 1.6rem;
+}
+
+.email .btn-form-email {
+  cursor: pointer;
+}
+
+.btn-form-email svg {
+  width: 4rem;
+  height: 4rem;
+}
+
+.social-list-links {
+  padding-top: 1.4rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.check-promo-notif {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.check-promo-notif {
+  font-size: 1.3rem;
+  line-height: 1.6rem;
+  color: var(--font-button-color);
+}
+
+.check-promo-notif a {
+  color: var(--font-button-color);
+
+  filter: brightness(2);
+}
+
+.check-promo-notif a::after {
+  content: "";
+  width: 0%;
+  height: 0.1rem;
   display: block;
+  position: relative;
   top: 0;
-  left: 0;
-  background: var(--gradient);
-} */
+  left: 6.9rem;
+  background: var(--font-button-color);
+  transition: width 0.9s;
+}
+
+.check-promo-notif a:hover::after {
+  width: 40%;
+}
+
+.check-promo-notif [type="checkbox"] {
+  display: none;
+}
+
+.custom-check input + label::before {
+  content: "";
+  width: 2rem;
+  height: 2rem;
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 0.3rem;
+  margin-inline-end: 0.7rem;
+  margin-block-end: 0.7rem;
+  background: var(--font-button-color);
+}
+
+.custom-check input:checked + label::before {
+  background: var(--font-button-color) url(/assets/check-for-checkbox.svg)
+    no-repeat center;
+}
+
+/* custom-check
+c-check */
