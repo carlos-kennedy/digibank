@@ -1,0 +1,143 @@
+@media (min-width: 768px) {
+  section {
+    &#home {
+      img {
+        align-self: flex-end;
+      }
+    }
+
+    &#attendance {
+      .wrapper {
+        gap: 2rem;
+
+        img {
+          align-self: flex-end;
+          border-radius: 0;
+        }
+      }
+
+      ul.attend-list {
+        flex-flow: nowrap;
+
+        &::before {
+          height: 46rem;
+        }
+      }
+    }
+  }
+
+  footer {
+    ul.foot-info {
+      flex-flow: row;
+    }
+  }
+}
+
+@media (min-width: 1020px) {
+  nav {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    z-index: 3;
+    button {
+      &.hamburger {
+        display: none;
+      }
+    }
+
+    ul.nav-list {
+      transform: initial;
+      position: relative;
+      width: 66vw;
+      height: auto;
+      visibility: visible;
+      opacity: 10;
+      flex-flow: row;
+      gap: 5.1rem;
+      li {
+        padding: 0;
+      }
+    }
+  }
+
+  section {
+    &#home {
+      gap: 14.8rem;
+      header {
+        width: max(74rem);
+        p {
+          width: 67.8rem;
+          &:nth-child(5) {
+            width: 44rem;
+          }
+        }
+        button {
+          padding-block: 1.8rem 2.3rem;
+          padding-inline: 9.3rem;
+        }
+      }
+
+      img {
+        &:nth-child(2) {
+          width: max(59rem);
+        }
+      }
+    }
+    &#attendance {
+      .wrapper {
+        gap: 9.8rem;
+        img {
+          width: fit-content;
+          border-radius: 0;
+        }
+
+        header {
+          h2 {
+            width: 90%;
+          }
+          p {
+            text-align: left;
+            width: 90%;
+          }
+        }
+      }
+      ul.attend-list {
+        flex-flow: nowrap;
+        &::before {
+          height: 56.3rem;
+        }
+      }
+    }
+  }
+
+  footer {
+    ul.foot-info {
+      flex-flow: row;
+      gap: 20rem;
+    }
+    ul.social-list {
+      justify-content: flex-start;
+    }
+    form {
+      align-items: flex-end;
+    }
+
+    div {
+      &.input-c {
+        padding-top: 1.8rem;
+        gap: 0.7rem;
+        color: $text-color;
+
+        input {
+          accent-color: $main-color;
+          width: auto;
+        }
+      }
+      input {
+        width: 25rem;
+        padding: 0.8rem;
+        border: none;
+      }
+    }
+  }
+}

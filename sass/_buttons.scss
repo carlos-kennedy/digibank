@@ -1,0 +1,52 @@
+button {
+  cursor: pointer;
+  z-index: 100;
+  &.hamburger {
+    padding: 0;
+  }
+  .hamburger-inner,
+  .hamburger-inner::before,
+  .hamburger-inner::after {
+    width: 3rem;
+    height: .4rem;
+  }
+}
+
+section#home {
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4.2rem;
+    padding-block: 2.5rem;
+    padding-inline: 2.5rem;
+    font-size: clamp(2rem, 1.76rem + 0.6667vw, 2.4rem);
+    color: #ffffff;
+    background-color: #030314;
+    border: none;
+    img {
+      width: max(2.7rem);
+    }
+  }
+}
+
+footer{
+  button{
+    background-color: $btn-color-form;
+        padding: 1.55rem;
+        position: relative;
+    border: none;
+    z-index: 1;
+
+    &::before{
+      content: '';
+      width: .7rem;
+      height: .8rem;
+      background-color: $footer-bg;
+      clip-path: polygon(100% 50%, 0 0, 0 100%);
+      position: absolute;
+      left: 42%;
+        top: 38%;
+    }
+  }
+}

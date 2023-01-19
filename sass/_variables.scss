@@ -1,0 +1,12 @@
+$main-color:#0CD68A;
+$footer-bg: #262626;
+$text-color: #ffffff;
+$-o-text-color: #030314;
+$border-f-color: #ffffff4d;
+$btn-color-form: #FFC63A;
+
+@mixin linearGradient{
+    background: linear-gradient(107.31deg,
+                #c1ffe8 -11.65%,
+                rgba(193, 255, 232, 0) 112.04%);
+}

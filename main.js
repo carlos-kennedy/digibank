@@ -1,30 +1,56 @@
-window.addEventListener("scroll", sectionOnScroll);
+import "./sass/style.css";
+window.addEventListener("scroll", onScroll);
 
-function sectionOnScroll() {
-  activeSections(home);
-  activeSections(creditCards);
-  activeSections(services);
-  activeSections(customerService);
+const btnMenu = document.querySelector("button");
+const navList = document.querySelector("ul.nav-list");
+
+function btnNavMenu() {
+  btnMenu.classList.toggle("is-active");
+  if ((btnMenu.classList.add = "is-active")) {
+    navList.classList.toggle("open");
+  }
 }
 
-function activeSections(section) {
-  const targetLine = scrollY + innerHeight / 2;
+btnMenu.addEventListener("click", btnNavMenu);
+btnMenu.addEventListener("click", () => {
+  if (navList.classList == "nav-list open") {
+    navList.setAttribute("aria-expanded", "true");
+    navList.setAttribute("aria-label", "true");
+  } else {
+    navList.setAttribute("aria-expanded", "false");
+    navList.setAttribute("aria-label", "false");
+  }
+});
+
+document.querySelector("ul.nav-list").addEventListener("click", () => {
+  navList.classList.remove("open");
+  btnMenu.classList.remove("is-active");
+});
+
+function onScroll() {
+  activateMenuAtCurrentSection(home);
+  activateMenuAtCurrentSection(services);
+  activateMenuAtCurrentSection(attendance);
+}
+
+function activateMenuAtCurrentSection(section) {
+  const targetline = scrollY + innerHeight / 2;
 
   const sectionTop = section.offsetTop;
   const sectionHeight = section.offsetHeight;
+  const sectionTopReachOrPassedTargetline = targetline >= sectionTop;
 
-  const sectionPassedOrNotTargetLine = targetLine >= sectionTop;
-  const sectionEndAt = sectionTop + sectionHeight;
+  const sectionEndsAt = sectionTop + sectionHeight;
 
-  const sectionEndPassedTargetLine = sectionEndAt <= targetLine;
+  const sectionEndPassedTargetline = sectionEndsAt <= targetline;
 
   const sectionBoundaries =
-    sectionPassedOrNotTargetLine && !sectionEndPassedTargetLine;
+    sectionTopReachOrPassedTargetline && !sectionEndPassedTargetline;
 
-  const sectionIdInDocument = section.getAttribute("id");
+  const sectionId = section.getAttribute("id");
 
   const menuElement = document.querySelector(
-    `.menu a[href*=${sectionIdInDocument}]`
+    `ul.nav-list a[href*=${sectionId}]`
   );
 
   menuElement.classList.remove("active");
